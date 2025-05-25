@@ -1,3 +1,4 @@
+import { fetchApi } from "../../../utils/fetchApi.js";
 import Button from "../../UI/button/index.js";
 import Typography from "../../UI/typography/index.js";
 
@@ -14,8 +15,15 @@ class Homepage {
     this.render();
   }
 
+  getDataMovie() {
+    fetchApi("GET", "titles/x/upcoming").then((data) => {
+      console.log(data);
+    });
+  }
+
   render() {
     this.homeContainer.innerHTML = "";
+    this.getDataMovie();
     const title = new Typography({ variant: "h1", children: "Homepage" });
     this.homeContainer.appendChild(title.render());
     const homeButtonNavigate = new Button({
