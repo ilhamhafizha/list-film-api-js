@@ -1,22 +1,23 @@
 class Button {
-  constructor() {
+  constructor(props) {
+    const { text, variant, onclick } = props;
     this.handleClick = this.handleClick.bind(this);
-    this.variant = "primary";
+    this.variant = variant;
+    this.text = text;
+    this.onclick = onclick;
   }
 
   handleClick() {
-    if (this.variant === "primary") {
-      console.log("Primary button clicked");
-      this.variant = "secondary"; // Change variant for next click
+    if (this.onclick) {
+      this.onclick();
     } else {
-      console.log("Secondary button clicked");
-      this.variant = "primary"; // Change variant back for next click
+      console.log("Button clicked");
     }
   }
 
   render() {
     const button = document.createElement("button");
-    button.innerHTML = "Click Me";
+    button.innerHTML = this.text;
     button.addEventListener("click", this.handleClick.bind(this));
     return button;
   }
