@@ -6,7 +6,7 @@ class Detailpage {
   render() {
     const detailContainer = document.createElement("div");
     const title = new Typography({ variant: "h1", children: "Detail page" });
-    detailContainer.appendChild(title.render()); // Perbaikan di sini
+    detailContainer.appendChild(title.render()); 
     const detailButtonNavigate = new Button({
       text: "Go To detailPage",
       variant: "primary",
@@ -14,7 +14,7 @@ class Detailpage {
         window.location.hash = "";
       },
     });
-    detailContainer.appendChild(detailButtonNavigate.render()); // Perbaikan di sini
+    detailContainer.appendChild(detailButtonNavigate.render()); 
     return detailContainer;
   }
 }

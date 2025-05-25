@@ -10,7 +10,7 @@ class Homepage {
   render() {
     const homeContainer = document.createElement("div");
     const title = new Typography({ variant: "h1", children: "Homepage" });
-    homeContainer.appendChild(title.render()); // Perbaikan di sini
+    homeContainer.appendChild(title.render()); 
     const homeButtonNavigate = new Button({
       text: "Go To DetailPage",
       variant: "primary",
@@ -18,7 +18,7 @@ class Homepage {
         window.location.hash = "detail";
       },
     });
-    homeContainer.appendChild(homeButtonNavigate.render()); // Perbaikan di sini
+    homeContainer.appendChild(homeButtonNavigate.render()); 
     homeContainer.appendChild(
       new Typography({
         variant: "p",
