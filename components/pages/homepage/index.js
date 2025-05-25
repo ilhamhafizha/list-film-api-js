@@ -2,7 +2,11 @@ import Button from "../../UI/button/index.js";
 import Typography from "../../UI/typography/index.js";
 
 class Homepage {
-  constructor(props) {}
+  constructor() {
+    this.state = {
+      count: 0,
+    };
+  }
   render() {
     const homeContainer = document.createElement("div");
     const title = new Typography({ variant: "h1", children: "Homepage" });
@@ -15,6 +19,12 @@ class Homepage {
       },
     });
     homeContainer.appendChild(homeButtonNavigate.render()); // Perbaikan di sini
+    homeContainer.appendChild(
+      new Typography({
+        variant: "p",
+        children: `Count: ${this.state.count}`,
+      }).render()
+    );
     return homeContainer;
   }
 }
