@@ -9,10 +9,10 @@ const ROUTES = {
 export const route = (hash) => {
   const appContainer = document.getElementById("app");
   appContainer.innerHTML = "";
-  if (hash === "") {
-    appContainer.appendChild(ROUTES["home"]);
-  } else if (hash === "detail") {
-    appContainer.appendChild(ROUTES["detail"]);
+  const hashRoute = hash === "" ? "home" : hash;
+  const isavailablePage = ROUTES.hasOwnProperty(hashRoute);
+  if (isavailablePage) {
+    appContainer.appendChild(ROUTES[hashRoute]);
   } else {
     alert("404 Not Found");
   }
