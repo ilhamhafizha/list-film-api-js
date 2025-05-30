@@ -6,6 +6,7 @@ class Homepage {
   constructor() {
     this.state = {
       count: 0,
+      isLoading: false,
     };
     this.homeContainer = document.createElement("div");
   }
@@ -16,49 +17,24 @@ class Homepage {
   }
 
   getDataMovie() {
+    this.setState({ isLoading: true });
     fetchApi("GET", "titles/x/upcoming").then((data) => {
       console.log(data);
+      this.setState({ isLoading: false });
     });
   }
 
   render() {
     this.homeContainer.innerHTML = "";
-    this.getDataMovie();
     const title = new Typography({ variant: "h1", children: "Homepage" });
     this.homeContainer.appendChild(title.render());
     const homeButtonNavigate = new Button({
-      text: "Go To DetailPage",
+      text: "Search Movie",
       variant: "primary",
-      onclick: () => {
-        window.location.hash = "detail";
-      },
+      disabled: this.state.isLoading,
+      onclick: () => this.getDataMovie(),
     });
     this.homeContainer.appendChild(homeButtonNavigate.render());
-    this.homeContainer.appendChild(
-      new Typography({
-        variant: "p",
-        children: `Count: ${this.state.count}`,
-      }).render()
-    );
-
-    this.homeContainer.appendChild(
-      new Button({
-        text: "add",
-        variant: "secondary",
-        onclick: () => {
-          this.setState({ count: this.state.count + 1 });
-        },
-      }).render()
-    );
-    this.homeContainer.appendChild(
-      new Button({
-        text: "subtract",
-        variant: "secondary",
-        onclick: () => {
-          this.setState({ count: this.state.count - 1 });
-        },
-      }).render()
-    );
 
     return this.homeContainer;
   }
