@@ -1,5 +1,5 @@
 import { fetchApi } from "../../../utils/fetchApi.js";
-import Button from "../../UI/button/index.js";
+import FilterMovie from "../../container/FilterMovie/index.js";
 import Typography from "../../UI/typography/index.js";
 
 class Homepage {
@@ -28,14 +28,7 @@ class Homepage {
     this.homeContainer.innerHTML = "";
     const title = new Typography({ variant: "h1", children: "Homepage" });
     this.homeContainer.appendChild(title.render());
-    const homeButtonNavigate = new Button({
-      text: "Search Movie",
-      variant: "primary",
-      disabled: this.state.isLoading,
-      onclick: () => this.getDataMovie(),
-    });
-    this.homeContainer.appendChild(homeButtonNavigate.render());
-
+    this.homeContainer.appendChild(new FilterMovie({ submitFilter: () => this.getDataMovie() }).render());
     return this.homeContainer;
   }
 }

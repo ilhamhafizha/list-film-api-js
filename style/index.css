@@ -22,3 +22,17 @@ body {
   color: var(--white-color);
   cursor: not-allowed;
 }
+
+.form-select {
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-bg);
+  color: var(--secondary-color);
+}
+
+.filter-container {
+  display: flex;
+
+  gap: 10px;
+}
