@@ -1,20 +1,28 @@
 import { fetchApi } from "../../../utils/fetchApi.js";
 import FilterMovie from "../../container/FilterMovie/index.js";
+import MovieList from "../../container/MovieList/index.js";
 import Typography from "../../UI/typography/index.js";
 
 class Homepage {
   constructor() {
     this.state = {
       count: 0,
-      isLoading: false,
+      isLoading: true,
       FilterType: "",
       FilterYear: "",
+      movieList: [],
     };
     this.homeContainer = document.createElement("div");
+    this.init();
   }
 
   setState(newState) {
     this.state = { ...this.state, ...newState };
+    this.render();
+  }
+
+  init() {
+    this.getDataMovie();
     this.render();
   }
 
@@ -23,17 +31,19 @@ class Homepage {
     let urlPath = "titles/x/upcoming";
 
     // add params
-    if(this.state.FilterType !== "") {
-      urlPath += `?type=${this.state.FilterType}`;
-      if(this.state.FilterYear !== "") {
+    if (this.state.FilterType !== "") {
+      urlPath += `?titleType=${this.state.FilterType}`;
+      if (this.state.FilterYear !== "") {
         urlPath += `&year=${this.state.FilterYear}`;
       }
-    } else if(this.state.FilterYear !== "") {
+    } else if (this.state.FilterYear !== "") {
       urlPath += `?year=${this.state.FilterYear}`;
     }
 
     fetchApi("GET", urlPath).then((data) => {
-      console.log(data);
+      this.setState({
+        movieList: data.results,
+      });
       this.setState({ isLoading: false });
     });
   }
@@ -51,6 +61,7 @@ class Homepage {
         year: this.state.FilterYear,
       }).render()
     );
+    this.homeContainer.appendChild(new MovieList({ movieItems: this.state.movieList }).render());
     return this.homeContainer;
   }
 }
