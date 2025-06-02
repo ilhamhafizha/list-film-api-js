@@ -11,6 +11,7 @@ class Homepage {
       FilterType: "",
       FilterYear: "",
       movieList: [],
+      page: 1,
     };
     this.homeContainer = document.createElement("div");
     this.init();
@@ -26,29 +27,52 @@ class Homepage {
     this.render();
   }
 
-  getDataMovie() {
+  getDataMovie(pageParam = 1, type = "get") {
     this.setState({ isLoading: true });
-    let urlPath = "titles/x/upcoming?limit=4";
+    const page = type === "get" ? 1 : pageParam;
+    let urlPath = `titles/x/upcoming?limit=4&page=${page}`;
 
     // add params
     if (this.state.FilterType !== "") {
       urlPath += `&titleType=${this.state.FilterType}`;
-    } else if (this.state.FilterYear !== "") {
+    }
+    if (this.state.FilterYear !== "") {
       urlPath += `&year=${this.state.FilterYear}`;
     }
 
-    fetchApi("GET", urlPath).then((data) => {
-      this.setState({
-        movieList: data.results,
+    fetchApi("GET", urlPath)
+      .then((data) => {
+        if (type === "get") {
+          this.setState({
+            movieList: data.results,
+          });
+        } else {
+          this.setState({
+            movieList: [...this.state.movieList, ...data.results],
+          });
+        }
+      })
+      .finally(() => {
+        this.setState({ isLoading: false });
       });
-      this.setState({ isLoading: false });
-    });
+  }
+
+  loadMoreMovie() {
+    const nextPage = this.state.page + 1; // Hitung halaman berikutnya
+    this.setState({ isLoading: true, page: nextPage }); // Perbarui state
+    this.getDataMovie(nextPage, "load"); // Gunakan nilai nextPage
   }
 
   render() {
     this.homeContainer.innerHTML = "";
-    const title = new Typography({ variant: "h1", children: "Homepage" });
+    const title = new Typography({ variant: "h1", children: "FASTMOVIE" });
     this.homeContainer.appendChild(title.render());
+
+    const caption1 = new Typography({ variant: "h1", children: "MOVIE WEB" });
+    this.homeContainer.appendChild(caption1.render());
+
+    const caption2 = new Typography({ variant: "h1", children: "USING VANILA", className: "caption2" });
+    this.homeContainer.appendChild(caption2.render());
 
     this.homeContainer.appendChild(
       new FilterMovie({
@@ -59,9 +83,17 @@ class Homepage {
         year: this.state.FilterYear,
       }).render()
     );
+
     const titleUpComing = new Typography({ variant: "h1", children: "Upcoming Movie" });
     this.homeContainer.appendChild(titleUpComing.render());
-    this.homeContainer.appendChild(new MovieList({ movieItems: this.state.movieList }).render());
+
+    this.homeContainer.appendChild(
+      new MovieList({
+        movieItems: this.state.movieList,
+        loadMoreMovie: () => this.loadMoreMovie(),
+      }).render()
+    );
+
     return this.homeContainer;
   }
 }
