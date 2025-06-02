@@ -28,16 +28,13 @@ class Homepage {
 
   getDataMovie() {
     this.setState({ isLoading: true });
-    let urlPath = "titles/x/upcoming";
+    let urlPath = "titles/x/upcoming?limit=4";
 
     // add params
     if (this.state.FilterType !== "") {
-      urlPath += `?titleType=${this.state.FilterType}`;
-      if (this.state.FilterYear !== "") {
-        urlPath += `&year=${this.state.FilterYear}`;
-      }
+      urlPath += `&titleType=${this.state.FilterType}`;
     } else if (this.state.FilterYear !== "") {
-      urlPath += `?year=${this.state.FilterYear}`;
+      urlPath += `&year=${this.state.FilterYear}`;
     }
 
     fetchApi("GET", urlPath).then((data) => {
@@ -52,6 +49,7 @@ class Homepage {
     this.homeContainer.innerHTML = "";
     const title = new Typography({ variant: "h1", children: "Homepage" });
     this.homeContainer.appendChild(title.render());
+
     this.homeContainer.appendChild(
       new FilterMovie({
         submitFilter: () => this.getDataMovie(),
@@ -61,6 +59,8 @@ class Homepage {
         year: this.state.FilterYear,
       }).render()
     );
+    const titleUpComing = new Typography({ variant: "h1", children: "Upcoming Movie" });
+    this.homeContainer.appendChild(titleUpComing.render());
     this.homeContainer.appendChild(new MovieList({ movieItems: this.state.movieList }).render());
     return this.homeContainer;
   }

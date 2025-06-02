@@ -41,6 +41,7 @@ class FilterMovie {
       new Select({
         option: [
           { value: "0", text: "Select Year" },
+          { value: "2025", text: "2025" },
           { value: "2024", text: "2024" },
           { value: "2023", text: "2023" },
           { value: "2022", text: "2022" },

@@ -36,3 +36,33 @@ body {
 
   gap: 10px;
 }
+
+.img-movie {
+  width: 400px;
+  min-height: 610px;
+  max-height: 610px;
+  object-fit: cover;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.movie-list {
+  display: flex;
+  /* overflow-x: scroll; */
+  gap: 20px;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.image-container {
+  width: 400px;
+  min-height: 610px;
+  max-height: 610px;
+}
+
+.movie-card {
+  border: 1px solid white;
+  width: 400px;
+  height: 720px;
+  border-radius: 20px;
+}

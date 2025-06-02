@@ -1,17 +1,17 @@
-import Typography from "../../UI/typography/index.js";
+import MovieItem from "../MovieItem/inde.js";
 
 class MovieList {
   constructor(props) {
     const { movieItems } = props;
     this.movieItems = movieItems;
     this.movieContainer = document.createElement("div");
+    this.movieContainer.className = "movie-list";
   }
 
   render() {
     this.movieItems.map((movie) => {
-      const movieTitle = new Typography({
-        variant: "h2",
-        children: movie.originalTitleText.text,
+      const movieTitle = new MovieItem({
+        movie: movie,
       });
 
       this.movieContainer.appendChild(movieTitle.render());
