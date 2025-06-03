@@ -23,17 +23,19 @@ class MovieList {
     });
 
     this.movieWrapper.appendChild(this.movieContainer);
-    this.movieWrapper.appendChild(
-      new Button({
-        text: this.isLoading ? "" : "Load More", // Kosongkan teks jika sedang loading
-        variant: "primary",
-        onclick: () => {
-          this.loadMoreMovie();
-        },
-        className: "load-more",
-        disabled: this.isLoading,
-      }).render()
-    );
+    if (this.movieItems.length > 0) {
+      this.movieWrapper.appendChild(
+        new Button({
+          text: this.isLoading ? "" : "Load More", // Kosongkan teks jika sedang loading
+          variant: "primary",
+          onclick: () => {
+            this.loadMoreMovie();
+          },
+          className: "load-more",
+          disabled: this.isLoading,
+        }).render()
+      );
+    }
 
     if (this.isLoading) {
       const loader = new Loader().render();
