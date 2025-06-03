@@ -1,6 +1,7 @@
 import { fetchApi } from "../../../utils/fetchApi.js";
 import FilterMovie from "../../container/FilterMovie/index.js";
 import MovieList from "../../container/MovieList/index.js";
+import Loader from "../../UI/loader/index.js";
 import Typography from "../../UI/typography/index.js";
 
 class Homepage {
@@ -91,6 +92,7 @@ class Homepage {
       new MovieList({
         movieItems: this.state.movieList,
         loadMoreMovie: () => this.loadMoreMovie(),
+        isLoading: this.state.isLoading,
       }).render()
     );
 

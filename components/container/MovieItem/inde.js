@@ -21,13 +21,17 @@ class MovieItem {
     );
     this.movieItemContainer.appendChild(divImage);
 
-    this.movieItemContainer.appendChild(
+    const divInfo = document.createElement("div");
+    divInfo.className = "info-container";
+    this.movieItemContainer.appendChild(divInfo);
+
+    divInfo.appendChild(
       new Typography({
         variant: "h4",
         children: this.movie.titleText?.text || "No Title Available",
       }).render()
     );
-    this.movieItemContainer.appendChild(
+    divInfo.appendChild(
       new Typography({
         variant: "h5",
         children: this.movie.releaseYear?.year || "No Title Available",
