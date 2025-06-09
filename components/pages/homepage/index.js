@@ -1,5 +1,6 @@
 import { fetchApi } from "../../../utils/fetchApi.js";
 import FilterMovie from "../../container/FilterMovie/index.js";
+import Footer from "../../container/Footer/index.js";
 import MovieList from "../../container/MovieList/index.js";
 import Navigation from "../../container/Navigation/index.js";
 import Loader from "../../UI/loader/index.js";
@@ -136,7 +137,9 @@ class Homepage {
         isLoading: this.state.isLoading,
       }).render()
     );
-
+    this.homeContainer.appendChild(
+      new Footer().render()
+    );
     return this.homeContainer;
   }
 }

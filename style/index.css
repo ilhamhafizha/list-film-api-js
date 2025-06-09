@@ -189,3 +189,7 @@ body {
   font-size: 15px;
   user-select: none;
 }
+
+.footer-text {
+  text-align: center;
+}
