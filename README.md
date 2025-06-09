@@ -1,60 +1,59 @@
-# 🎬 Website Movie List
+# 🎬 Movie List Website
 
-Sebuah website sederhana yang menampilkan daftar film dengan memanfaatkan **Movies Database API**. Dibangun menggunakan **Vanilla JavaScript**, tanpa framework tambahan.
+A simple website that displays a list of movies using the **Movies Database API**. Built with **Vanilla JavaScript**, without any additional frameworks.
 
 ---
 
 ## 🚀 Demo
 
-🔗 [Lihat Website di Vercel](https://list-film-api-js.vercel.app/#)
+🔗 [View Website on Vercel](https://list-film-api-js.vercel.app/#)
 
 ---
 
-## 🛠️ Stack Teknologi
+## 🛠️ Technology Stack
 
 - HTML5
 - CSS3
-- Vanilla JavaScript (Pure JS, tanpa framework)
-- [Movies Database API](https://rapidapi.com/SAdrian/api/moviesdatabase) dari RapidAPI
+- Vanilla JavaScript (Pure JS, no frameworks)
+- [Movies Database API](https://rapidapi.com/SAdrian/api/moviesdatabase) from RapidAPI
 
 ---
 
+## 🔍 Features
+- Display movie details (poster, title, year, etc.)
+- Responsive design (accessible on desktop & mobile)
+- Direct API integration without backend
 
-## 🔍 Fitur
-- Menampilkan detail film (poster, judul, tahun, dll)
-- Responsive design (dapat diakses via desktop & mobile)
-- Integrasi langsung dengan API tanpa backend
-  
 -----
 
-## 📦 Cara Menjalankan (Lokal)
+## 📦 How to Run (Local)
 
-1.  **Clone repo:**
+1. **Clone the repo:**
 
     ```bash
     git clone https://github.com/username/movie-list-vanilla-js.git
     cd movie-list-vanilla-js
     ```
 
-2.  **Inisialisasi dan instal dependensi:**
+2. **Initialize and install dependencies:**
 
     ```bash
     npm init -y
     npm i express
     ```
 
-3.  **Jalankan server:**
+3. **Start the server:**
 
     ```bash
     node server.js
     ```
 
-4.  **Buka di browser:**
+4. **Open in browser:**  
     `http://localhost:3001`
 
 -----
 
-## 📸 Screenshot
+## 📸 Screenshots
 
 ### 🖥️ Home Page  
 <img width="450" alt="Home Page" src="https://github.com/user-attachments/assets/09fd915e-0486-4ceb-8441-d83985c45726" />
@@ -68,5 +67,4 @@ Sebuah website sederhana yang menampilkan daftar film dengan memanfaatkan **Movi
 
 | ![Image 1](https://github.com/user-attachments/assets/40d73709-3593-4dbc-972b-421dca82abbd) | ![Image 2](https://github.com/user-attachments/assets/1a6999a8-0f7f-4cbe-8faa-f3d4237ab9d6) |
 |:--:|:--:|
-| Tampilan Home Page | Tampilan Detail Page |
-
+| Home Page View | Detail Page View |
