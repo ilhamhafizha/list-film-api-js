@@ -20,8 +20,13 @@ class Homepage {
       isLightMode: false,
     };
     this.homeContainer = document.createElement("div");
-
     this.init();
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash.split('?')[0] === "") {
+        this.init();
+      }
+    });
+
   }
 
   setState(newState) {

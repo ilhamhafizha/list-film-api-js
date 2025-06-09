@@ -12,7 +12,7 @@ class Navigation {
   render() {
     const containerLeft = document.createElement("div");
     containerLeft.className = "container-left";
-    const title = new Typography({ variant: "h1", children: "FASTMOVIE" });
+    const title = new Typography({ variant: "h1", children: "MOVIE LIST" });
     containerLeft.appendChild(title.render());
     const homeLink = new Typography({
       variant: "h5",
