@@ -14,6 +14,10 @@ class MovieList {
   }
 
   render() {
+    // Bersihkan isi sebelum render ulang
+    this.movieWrapper.innerHTML = "";
+    this.movieContainer.innerHTML = "";
+
     this.movieItems.map((movie) => {
       const movieTitle = new MovieItem({
         movie: movie,
@@ -23,23 +27,25 @@ class MovieList {
     });
 
     this.movieWrapper.appendChild(this.movieContainer);
+
+    let loadMoreBtn = null;
     if (this.movieItems.length > 0) {
-      this.movieWrapper.appendChild(
-        new Button({
-          text: this.isLoading ? "" : "Load More", // Kosongkan teks jika sedang loading
-          variant: "primary",
-          onclick: () => {
-            this.loadMoreMovie();
-          },
-          className: "load-more",
-          disabled: this.isLoading,
-        }).render()
-      );
+      loadMoreBtn = new Button({
+        text: this.isLoading ? "" : "Load More",
+        variant: "primary",
+        onclick: () => {
+          this.loadMoreMovie();
+        },
+        className: "load-more",
+        disabled: this.isLoading,
+      }).render();
+
+      this.movieWrapper.appendChild(loadMoreBtn);
     }
 
-    if (this.isLoading) {
+    if (this.isLoading && loadMoreBtn) {
       const loader = new Loader().render();
-      this.movieWrapper.querySelector(".load-more").appendChild(loader);
+      loadMoreBtn.appendChild(loader);
     }
 
     return this.movieWrapper;

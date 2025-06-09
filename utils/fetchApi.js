@@ -12,6 +12,8 @@
 //   return result;
 // };
 
+import config from "../config.js";
+
 export const fetchApi = async (method, path) => {
   try {
     const response = await fetch(`${config.BASE_URL}${path}`, {

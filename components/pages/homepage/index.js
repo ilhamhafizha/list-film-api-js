@@ -13,6 +13,8 @@ class Homepage {
       FilterYear: "",
       movieList: [],
       page: 1,
+      movie: [],
+      moviePage: 1
     };
     this.homeContainer = document.createElement("div");
     this.init();
@@ -24,20 +26,20 @@ class Homepage {
   }
 
   init() {
-    this.getDataMovie();
-    this.render();
+    if (window.location.hash === "") {
+      this.getDataMovie();
+      this.render();
+    }
   }
 
   getDataMovie(pageParam = 1, type = "get") {
     this.setState({ isLoading: true });
     const page = type === "get" ? 1 : pageParam;
-    let urlPath = `titles/x/upcoming?limit=4&page=${page}`;
+    let urlPath = `titles/x/upcoming?limit=4&page=${page}&sort=year.decr`;
 
-    // add params
     if (this.state.FilterType !== "") {
       urlPath += `&titleType=${this.state.FilterType}`;
-    }
-    if (this.state.FilterYear !== "") {
+    } else if (this.state.FilterYear !== "") {
       urlPath += `&year=${this.state.FilterYear}`;
     }
 
@@ -56,12 +58,40 @@ class Homepage {
       .finally(() => {
         this.setState({ isLoading: false });
       });
-  }
 
-  loadMoreMovie() {
-    const nextPage = this.state.page + 1; // Hitung halaman berikutnya
-    this.setState({ isLoading: true, page: nextPage }); // Perbarui state
-    this.getDataMovie(nextPage, "load"); // Gunakan nilai nextPage
+    // Movie of the year
+    const pageMovie = type === "get" ? 1 : pageParam;
+    let year = '2024';
+    let urlPathMovie = `titles?limit=4&page=${pageMovie}&sort=year.decr&year=${year}`;
+    if (this.state.FilterType !== "") {
+      urlPathMovie += `&titleType=${this.state.FilterType}`;
+    } else if (this.state.FilterYear !== "") {
+      year += this.state.FilterYear;
+    }
+
+    fetchApi("GET", urlPathMovie)
+      .then((data) => {
+        if (type === "get") {
+          this.setState({
+            movie: data.results,
+          });
+        } else {
+          this.setState({
+            movie: [...this.state.movie, ...data.results],
+          });
+        }
+      });
+    this.setState({ isLoading: false });
+  }
+  loadMoreMovie(params) {
+    this.setState({ isLoading: true });
+    if (params === 'upcoming') {
+      this.setState({ page: this.state.page + 1 });
+      this.getDataMovie(this.state.page + 1, 'load');
+    } else if (params) {
+      this.setState({ moviePage: this.state.moviePage + 1 });
+      this.getDataMovie(this.state.moviePage + 1, 'load');
+    }
   }
 
   render() {
@@ -91,7 +121,17 @@ class Homepage {
     this.homeContainer.appendChild(
       new MovieList({
         movieItems: this.state.movieList,
-        loadMoreMovie: () => this.loadMoreMovie(),
+        loadMoreMovie: () => this.loadMoreMovie('upcoming'),
+        isLoading: this.state.isLoading,
+      }).render()
+    );
+
+    const titleThisYear = new Typography({ variant: "h1", children: "Movie Of Year " });
+    this.homeContainer.appendChild(titleThisYear.render());
+    this.homeContainer.appendChild(
+      new MovieList({
+        movieItems: this.state.movie,
+        loadMoreMovie: () => this.loadMoreMovie('movie'),
         isLoading: this.state.isLoading,
       }).render()
     );

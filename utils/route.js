@@ -9,7 +9,7 @@ const ROUTES = {
 export const route = (hash) => {
   const appContainer = document.getElementById("app");
   appContainer.innerHTML = "";
-  const hashRoute = hash === "" ? "home" : hash;
+  const hashRoute = hash === "" ? "home" : hash.split("?")[0];
   const isavailablePage = ROUTES.hasOwnProperty(hashRoute);
   if (isavailablePage) {
     appContainer.appendChild(ROUTES[hashRoute]);
