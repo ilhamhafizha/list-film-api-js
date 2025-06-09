@@ -115,9 +115,6 @@ class Homepage {
 
     this.homeContainer.appendChild(navigation.render());
 
-
-
-
     const caption1 = new Typography({ variant: "h1", children: "MOVIE WEB" });
     this.homeContainer.appendChild(caption1.render());
 
