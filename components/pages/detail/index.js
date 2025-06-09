@@ -9,7 +9,8 @@ class Detailpage {
     this.state = {
       selectedItem: {},
       isLoading: true,
-      movieRate: {}
+      movieRate: {},
+      isLightMode: false,
     },
       this.detailContainer = document.createElement("div");
     this.init()
@@ -48,7 +49,10 @@ class Detailpage {
 
   render() {
     this.detailContainer.innerHTML = "";
-    const navigation = new Navigation();
+    const navigation = new Navigation({
+      setLightMode: (value) => this.setState({ isLightMode: value }),
+      isLightMode: this.state.isLightMode
+    });
     this.detailContainer.appendChild(navigation.render());
     // const detailButtonNavigate = new Button({
     //   text: "Go To detailPage",

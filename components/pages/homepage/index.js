@@ -16,9 +16,11 @@ class Homepage {
       movieList: [],
       page: 1,
       movie: [],
-      moviePage: 1
+      moviePage: 1,
+      isLightMode: false,
     };
     this.homeContainer = document.createElement("div");
+
     this.init();
   }
 
@@ -98,8 +100,23 @@ class Homepage {
 
   render() {
     this.homeContainer.innerHTML = "";
-    const navigation = new Navigation();
+    this.homeContainer.className = this.state.isLightMode ? "home-container-light" : "home-container-dark";
+
+    if (this.state.isLightMode) {
+      document.body.style.backgroundColor = "#f0f0f0";
+    } else {
+      document.body.style.backgroundColor = "#0d1017"; // warna dark mode sesuai tema Anda
+    }
+
+    const navigation = new Navigation({
+      setLightMode: (value) => this.setState({ isLightMode: value }),
+      isLightMode: this.state.isLightMode
+    });
+
     this.homeContainer.appendChild(navigation.render());
+
+
+
 
     const caption1 = new Typography({ variant: "h1", children: "MOVIE WEB" });
     this.homeContainer.appendChild(caption1.render());
