@@ -2,6 +2,7 @@ import { fetchApi } from "../../../utils/fetchApi.js";
 import Button from "../../UI/button/index.js";
 import Typography from "../../UI/typography/index.js";
 import Image from "../../UI/image/index.js";
+import Skeleton from "../../UI/skeleton/index.js";
 
 class Detailpage {
   constructor() {
@@ -66,6 +67,7 @@ class Detailpage {
       Object.keys(selectedItem).length > 0 &&
       Object.keys(movieRate).length > 0
     ) {
+
       this.detailContainer.appendChild(
         new Image({
           src: selectedItem.primaryImage?.url,
@@ -111,6 +113,29 @@ class Detailpage {
       );
       contentContainer.appendChild(contentDetail);
       this.detailContainer.appendChild(contentContainer);
+    } else {
+      this.detailContainer.appendChild(
+        new Skeleton({ width: '100%', height: '600px' }).render()
+      );
+
+      const contentContainer = document.createElement('div');
+      contentContainer.className = 'content-container';
+      contentContainer.appendChild(
+        new Skeleton({ width: '300px', height: '300px' }).render()
+      );
+
+      const contentDetail = document.createElement('div');
+      contentDetail.className = 'content-detail';
+      contentDetail.appendChild(
+        new Skeleton({ width: '300px', height: '60px' }).render()
+      );
+      contentDetail.appendChild(
+        new Skeleton({ width: '300px', height: '60px' }).render()
+      );
+
+      contentContainer.appendChild(contentDetail);
+      this.detailContainer.appendChild(contentContainer);
+
     }
 
     return this.detailContainer;
