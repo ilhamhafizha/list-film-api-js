@@ -56,12 +56,13 @@ Sebuah website sederhana yang menampilkan daftar film dengan memanfaatkan **Movi
 
 ## 📸 Screenshot
 
-Berikut tampilan antarmuka dari website **Movie List** dalam format berdampingan:
+### 🖥️ Home Page  
+<img width="450" alt="Home Page" src="https://github.com/user-attachments/assets/09fd915e-0486-4ceb-8441-d83985c45726" />
 
-| 🖥️ Home Page | 🔍 Detail Page |
-|:--------------------------------------------------------------:|:-----------------------------------------------------------------:|
-| <img width="450" alt="Halaman Utama" src="https://github.com/user-attachments/assets/09fd915e-0486-4ceb-8441-d83985c45726" /> | <img width="450" alt="Halaman Utama" src="https://github.com/user-attachments/assets/496f4d33-3d65-4d7d-81f0-c3fff85d9c06" /> |
+### 🔍 Detail Page  
+<img width="450" alt="Detail Page" src="https://github.com/user-attachments/assets/496f4d33-3d65-4d7d-81f0-c3fff85d9c06" />
 
+---
 
 ### 📱 Mobile Responsive
 
