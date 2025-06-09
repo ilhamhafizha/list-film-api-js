@@ -175,3 +175,16 @@ body {
 .skeleton-header {
   animation: pulse 1s infinite ease-in-out;
 }
+
+.navigation-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navigation-container > h5 {
+  cursor: pointer;
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 20px;
+}

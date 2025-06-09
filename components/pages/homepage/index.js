@@ -1,6 +1,7 @@
 import { fetchApi } from "../../../utils/fetchApi.js";
 import FilterMovie from "../../container/FilterMovie/index.js";
 import MovieList from "../../container/MovieList/index.js";
+import Navigation from "../../container/Navigation/index.js";
 import Loader from "../../UI/loader/index.js";
 import Typography from "../../UI/typography/index.js";
 
@@ -96,8 +97,8 @@ class Homepage {
 
   render() {
     this.homeContainer.innerHTML = "";
-    const title = new Typography({ variant: "h1", children: "FASTMOVIE" });
-    this.homeContainer.appendChild(title.render());
+    const navigation = new Navigation();
+    this.homeContainer.appendChild(navigation.render());
 
     const caption1 = new Typography({ variant: "h1", children: "MOVIE WEB" });
     this.homeContainer.appendChild(caption1.render());

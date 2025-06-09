@@ -1,8 +1,8 @@
 import { fetchApi } from "../../../utils/fetchApi.js";
-import Button from "../../UI/button/index.js";
 import Typography from "../../UI/typography/index.js";
 import Image from "../../UI/image/index.js";
 import Skeleton from "../../UI/skeleton/index.js";
+import Navigation from "../../container/Navigation/index.js";
 
 class Detailpage {
   constructor() {
@@ -48,8 +48,8 @@ class Detailpage {
 
   render() {
     this.detailContainer.innerHTML = "";
-    const title = new Typography({ variant: "h1", children: "Detail page" });
-    this.detailContainer.appendChild(title.render());
+    const navigation = new Navigation();
+    this.detailContainer.appendChild(navigation.render());
     // const detailButtonNavigate = new Button({
     //   text: "Go To detailPage",
     //   variant: "primary",
