@@ -12,9 +12,9 @@
 //   return result;
 // };
 
-import config from "../config.js";
+import config from "../config.ts";
 
-export const fetchApi = async (method, path) => {
+export const fetchApi = async (method: string, path: string) => {
   try {
     const response = await fetch(`${config.BASE_URL}${path}`, {
       method: method,

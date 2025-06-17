@@ -1,9 +1,17 @@
-import Button from "../../UI/button/index.js";
-import Loader from "../../UI/loader/index.js";
-import MovieItem from "../MovieItem/inde.js";
+import Button from "../../UI/button/index.ts";
+import Loader from "../../UI/loader/index.ts";
+import MovieItem from "../MovieItem/inde.ts";
+import MovieItemProps from "../MovieItem/item.type.ts";
+import MovieListProps from "./list.type.ts";
 
 class MovieList {
-  constructor(props) {
+  movieItems: MovieItemProps[];
+  loadMoreMovie: () => void;
+  isLoading: boolean;
+  movieContainer: HTMLDivElement;
+  movieWrapper: HTMLDivElement;
+
+  constructor(props: MovieListProps) {
     const { movieItems, loadMoreMovie, isLoading } = props;
     this.movieItems = movieItems;
     this.movieContainer = document.createElement("div");
@@ -19,9 +27,7 @@ class MovieList {
     this.movieContainer.innerHTML = "";
 
     this.movieItems.map((movie) => {
-      const movieTitle = new MovieItem({
-        movie: movie,
-      });
+      const movieTitle = new MovieItem(movie);
 
       this.movieContainer.appendChild(movieTitle.render());
     });

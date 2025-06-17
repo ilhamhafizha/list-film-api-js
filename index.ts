@@ -1,4 +1,4 @@
-import { route } from "./utils/route.js";
+import { route } from "./utils/route.ts";
 
 const handleHash = () => {
   const hash = window.location.hash.substring(1);
@@ -7,7 +7,7 @@ const handleHash = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.hash === "") {
-    history.replaceState(null, null, "#");
+    history.replaceState(null, "", "#");
   }
   handleHash();
 });

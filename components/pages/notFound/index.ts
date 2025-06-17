@@ -1,7 +1,9 @@
-import Navigation from "../../container/Navigation/index.js";
-import Typography from "../../UI/typography/index.js";
+import Navigation from "../../container/Navigation/index.ts";
+import Typography from "../../UI/typography/index.ts";
 
 class notFound {
+  notFoundContainer: HTMLDivElement;
+
   constructor() {
     this.notFoundContainer = document.createElement("div");
     this.notFoundContainer.className = "not-found-container";
@@ -9,12 +11,16 @@ class notFound {
   }
 
   init() {
-    this.render()
+    this.render();
   }
 
   render() {
     this.notFoundContainer.innerHTML = ``;
-    const title = new Typography({ variant: "h1", children: "This Page Not Developed yet :(" });
+    const title = new Typography({
+      variant: "h1",
+      className: "",
+      children: "This Page Not Developed yet :(",
+    });
     this.notFoundContainer.appendChild(title.render());
     return this.notFoundContainer;
   }

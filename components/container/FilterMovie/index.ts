@@ -1,8 +1,17 @@
-import Button from "../../UI/button/index.js";
-import Select from "../../UI/select/index.js";
+import Button from "../../UI/button/index.ts";
+import Select from "../../UI/select/index.ts";
+import FilterProps from "./filter.type.ts";
 
 class FilterMovie {
-  constructor(props) {
+  filterContainer: HTMLDivElement;
+  submitFilter: () => void;
+  isLoading: boolean;
+  setType: (value: string) => void;
+  setYear: (value: string) => void;
+  type: string;
+  year: string;
+
+  constructor(props: FilterProps) {
     const { submitFilter, isLoading, setType, setYear, type, year } = props;
     this.filterContainer = document.createElement("div");
     this.submitFilter = submitFilter;
@@ -24,7 +33,7 @@ class FilterMovie {
 
     this.filterContainer.appendChild(
       new Select({
-        option: [
+        options: [
           { value: "0", text: "Select Type" },
           { value: "movie", text: "Movie" },
           { value: "short", text: "Short" },
@@ -39,7 +48,7 @@ class FilterMovie {
 
     this.filterContainer.appendChild(
       new Select({
-        option: [
+        options: [
           { value: "0", text: "Select Year" },
           { value: "2025", text: "2025" },
           { value: "2024", text: "2024" },

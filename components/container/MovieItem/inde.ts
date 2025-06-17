@@ -1,9 +1,12 @@
-import ImageComponent from "../../UI/image/index.js";
-import Typography from "../../UI/typography/index.js";
+import ImageComponent from "../../UI/image/index.ts";
+import Typography from "../../UI/typography/index.ts";
+import MovieItemProps from "./item.type.ts";
 
 class MovieItem {
-  constructor(props) {
-    const { movie } = props;
+  movie: MovieItemProps;
+  movieItemContainer: HTMLDivElement;
+
+  constructor(movie: MovieItemProps) {
     this.movie = movie;
     this.movieItemContainer = document.createElement("div");
     this.movieItemContainer.className = "movie-card";
@@ -31,13 +34,15 @@ class MovieItem {
     divInfo.appendChild(
       new Typography({
         variant: "h4",
+        className: "",
         children: this.movie.titleText?.text || "No Title Available",
       }).render()
     );
     divInfo.appendChild(
       new Typography({
         variant: "h5",
-        children: this.movie.releaseYear?.year || "No Title Available",
+        className: "",
+        children: this.movie.releaseYear?.year.toString() || "No Title Available",
       }).render()
     );
 

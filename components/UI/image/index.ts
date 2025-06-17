@@ -1,5 +1,9 @@
+import ImageProps from "./image.type";
+
 class ImageComponent {
-  constructor(props) {
+  image: HTMLImageElement;
+
+  constructor(props: ImageProps) {
     const { src, alt, className } = props;
     this.image = document.createElement("img");
     this.image.src = src;
