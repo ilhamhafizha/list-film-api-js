@@ -2,7 +2,8 @@
   "name": "list-film-api",
   "version": "1.0.0",
   "description": "Project ini dalam progres",
-  "main": "index.ts",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,5 +20,10 @@
   "dependencies": {
     "dotenv": "^16.5.0",
     "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.3",
+    "typescript": "^5.8.3"
   }
 }

@@ -1,4 +1,4 @@
-import Typography from "../../UI/typography/index.ts";
+import Typography from "../../UI/typography/index.js";
 
 class Footer {
   footerContainer: HTMLDivElement;

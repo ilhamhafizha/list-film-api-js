@@ -1,8 +1,8 @@
-import Button from "../../UI/button/index.ts";
-import Loader from "../../UI/loader/index.ts";
-import MovieItem from "../MovieItem/inde.ts";
-import MovieItemProps from "../MovieItem/item.type.ts";
-import MovieListProps from "./list.type.ts";
+import Button from "../../UI/button/index.js";
+import Loader from "../../UI/loader/index.js";
+import MovieItem from "../MovieItem/inde.js";
+import MovieItemProps from "../MovieItem/item.type.js";
+import MovieListProps from "./list.type.js";
 
 class MovieList {
   movieItems: MovieItemProps[];

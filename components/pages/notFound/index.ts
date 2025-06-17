@@ -1,5 +1,5 @@
-import Navigation from "../../container/Navigation/index.ts";
-import Typography from "../../UI/typography/index.ts";
+import Navigation from "../../container/Navigation/index.js";
+import Typography from "../../UI/typography/index.js";
 
 class notFound {
   notFoundContainer: HTMLDivElement;

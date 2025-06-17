@@ -1,6 +1,6 @@
-import Switch from "../../UI/switch/index.ts";
-import Typography from "../../UI/typography/index.ts";
-import NavigationProps from "./navigation.type.ts";
+import Switch from "../../UI/switch/index.js";
+import Typography from "../../UI/typography/index.js";
+import NavigationProps from "./navigation.type.js";
 
 class Navigation {
   navigationContainer: HTMLDivElement;

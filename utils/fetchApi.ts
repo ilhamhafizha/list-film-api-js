@@ -12,7 +12,7 @@
 //   return result;
 // };
 
-import config from "../config.ts";
+import config from "../config.js";
 
 export const fetchApi = async (method: string, path: string) => {
   try {

@@ -1,10 +1,10 @@
-import { fetchApi } from "../../../utils/fetchApi.ts";
-import Typography from "../../UI/typography/index.ts";
+import { fetchApi } from "../../../utils/fetchApi.js";
+import Typography from "../../UI/typography/index.js";
 
-import Skeleton from "../../UI/skeleton/index.ts";
-import Navigation from "../../container/Navigation/index.ts";
-import DetailProps from "./detail.type.ts";
-import ImageComponent from "../../UI/image/index.ts";
+import Skeleton from "../../UI/skeleton/index.js";
+import Navigation from "../../container/Navigation/index.js";
+import DetailProps from "./detail.type.js";
+import ImageComponent from "../../UI/image/index.js";
 
 class Detailpage {
   state: DetailProps;

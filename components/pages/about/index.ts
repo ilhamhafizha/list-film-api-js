@@ -1,6 +1,6 @@
-import Navigation from "../../container/Navigation/index.ts";
-import Typography from "../../UI/typography/index.ts";
-import AboutState from "./about.type.ts";
+import Navigation from "../../container/Navigation/index.js";
+import Typography from "../../UI/typography/index.js";
+import AboutState from "./about.type.js";
 
 class AboutPage {
   state: AboutState;
