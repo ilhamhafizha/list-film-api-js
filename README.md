@@ -14,7 +14,7 @@ A simple website that displays a list of movies using the **Movies Database API*
 
 - HTML5
 - CSS3
-- Vanilla JavaScript (Pure JS, no frameworks)
+- TypeScript (Pure TS, no frameworks)
 - [Movies Database API](https://rapidapi.com/SAdrian/api/moviesdatabase) from RapidAPI
 
 ---
