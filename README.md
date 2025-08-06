@@ -38,7 +38,6 @@ A simple website that displays a list of movies using the **Movies Database API*
 2. **Initialize and install dependencies:**
 
     ```bash
-    npm init -y
     npm install
     npm i express
     ```
